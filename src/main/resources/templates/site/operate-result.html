@@ -13,7 +13,6 @@
 	<div class="nk-container">
 		<!-- 头部 -->
 		<header class="bg-dark sticky-top" th:replace="index::header">
-
 		</header>
 
 		<!-- 内容 -->
@@ -44,7 +43,7 @@
             setInterval(function(){
                 var seconds = $("#seconds").text();
                 $("#seconds").text(--seconds);
-                if(seconds == 0) {
+                if(seconds === 0) {
                     location.href = $("#target").attr("href");
                 }
             }, 1000);
