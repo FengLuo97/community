@@ -1,0 +1,60 @@
+package com.fengluo.community.util;
+
+/**
+ * @Author: fengluo
+ * @Date: 2022/6/12 15:52
+ */
+public interface CommunityConstant {
+
+    int ACTIVATION_SUCCESS = 0;
+
+    int ACTIVATION_REPEATE = 1;
+
+    int ACTIVATION_FAILURE = 2;
+
+    /**
+     * 默认状态的登录凭证的过期时间
+     */
+    int DEFAULT_EXPIRED_SECONDS = 3600 * 12;
+
+    /**
+     * 记住我状态下的登录凭证的过期时间
+     */
+    int REMEMBER_EXPIRED_SECOND = 3600 * 24 * 100;
+
+    /**
+     * 实体类型：帖子
+     */
+    int ENTITY_TYPE_POST = 1;
+
+    /**
+     * 实体类型：评论
+     */
+    int ENTITY_TYPE_COMMENT = 2;
+
+    /**
+     * 实体类型：用户
+     */
+    int ENTITY_TYPE_USER = 3;
+
+    /**
+     * 主题：评论
+     */
+    String TOPIC_COMMENT = "comment";
+
+    /**
+     * 主题：点赞
+     */
+    String TOPIC_LIKE = "like";
+
+    /**
+     * 主题：关注
+     */
+    String TOPIC_FOLLOW = "follow";
+
+    /**
+     * 系统用户 id
+     */
+    int SYSTEM_USER_ID = 1;
+
+}

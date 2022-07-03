@@ -1,8 +1,12 @@
 package com.fengluo.community;
 
 import com.fengluo.community.dao.DiscussPostMapper;
+import com.fengluo.community.dao.LoginTicketMapper;
+import com.fengluo.community.dao.MessageMapper;
 import com.fengluo.community.dao.UserMapper;
 import com.fengluo.community.entity.DiscussPost;
+import com.fengluo.community.entity.LoginTicket;
+import com.fengluo.community.entity.Message;
 import com.fengluo.community.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,9 +26,14 @@ public class MapperTests {
     @Autowired
     private UserMapper userMapper;
 
-
     @Autowired
     private DiscussPostMapper discussPostMapper;
+
+    @Autowired
+    private LoginTicketMapper loginTicketMapper;
+
+    @Autowired
+    private MessageMapper messageMapper;
 
     @Test
     public void testSelectUser() {
@@ -77,4 +86,41 @@ public class MapperTests {
         System.out.println(rows);
     }
 
+    @Test
+    public void testInsertLoginTicket() {
+        LoginTicket loginTicket = new LoginTicket();
+        loginTicket.setUserId(101);
+        loginTicket.setTicket("abc");
+        loginTicket.setStatus(0);
+        loginTicket.setExpired(new Date(System.currentTimeMillis() + 1000 * 60 * 10));
+        loginTicketMapper.insertLoginTicket(loginTicket);
+    }
+
+    @Test
+    public void testSelectLoginTicket() {
+        LoginTicket loginTicket = loginTicketMapper.selectByTicket("abc");
+        System.out.println(loginTicket);
+
+        loginTicketMapper.updateStatus("abc", 1);
+        loginTicket = loginTicketMapper.selectByTicket("abc");
+        System.out.println(loginTicket);
+    }
+
+    @Test
+    public void testSelectLetters() {
+        List<Message> list = messageMapper.selectConversations(111, 0, 20);
+        System.out.println(list);
+
+        int count = messageMapper.selectConversationCount(111);
+        System.out.println(count);
+
+        List<Message> list1 = messageMapper.selectLetters("111_112", 0, 10);
+        System.out.println(list1);
+
+        int count1 = messageMapper.selectLetterCount("111_112");
+        System.out.println(count1);
+
+        int count2 = messageMapper.selectLetterUnreadCount(131, "111_131");
+        System.out.println(count2);
+    }
 }

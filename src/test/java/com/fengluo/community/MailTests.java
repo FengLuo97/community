@@ -33,6 +33,7 @@ public class MailTests {
 
         String process = templateEngine.process("/mail/demo", context);
         System.out.println(process);
+
         mailClient.sendMail("3167881811@qq.com", "Html", process);
     }
 }
